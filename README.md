@@ -4,6 +4,55 @@
 
 This is a repo for the HSTAT students visiting Stash! We're building a small Sinatra app that handles requests to [create, read, update, and delete](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) records. You'll hear people refer to this as "CRUD".
 
+### Let's get going!
+
+Assuming you're using RVM:
+
+```bash
+rvm install 2.5.0
+rvm use 2.5.0
+```
+
+Then:
+
+```bash
+gem install bundler
+bundle install
+```
+
+Run the script `create_database.rb` to create a new database:
+
+```bash
+ruby create_database.rb
+```
+
+Then you can connect to it like so:
+
+```bash
+sqlite3 app.db
+
+SQLite version 3.19.3 2017-06-27 16:48:08
+Enter ".help" for usage hints.
+sqlite> .tables
+players
+sqlite> select * from players;
+sqlite> insert into players (name) values ('Dave');
+sqlite> insert into players (name) values ('Bob');
+sqlite> insert into players (name) values ('Alice');
+sqlite> insert into players (name) values ('Sue');
+sqlite> select * from players;
+1|Dave
+2|Bob
+3|Alice
+4|Sue
+sqlite> 
+
+```
+
+Type ctrl + d to exit.
+
+Typing `rackup` should start a server on port 9292. Visit `http://localhost:9292/players` to see the homepage. There's a redirect that sends the "root path" `/` to the `/players` path. These instructions might differ if you're using [Cloud9](https://c9.io/login).
+
 ### Persistence
 
 We'll be working with an app that helps us save data. This is a fundamental part of building any application that needs to store the state of the objects within that domain. The objects we'll be working with are "Players" of a fictional game.

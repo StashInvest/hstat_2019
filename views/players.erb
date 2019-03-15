@@ -1,7 +1,16 @@
 <h1>Players</h1>
 
+<a href="/player/new">Make a new player</a>
+
 <ul>
   <% @players.each do |player| %>
-    <li>(<%= player.id %>) <%= player.name %></li>
+    <li>
+      Name: <%= player.name %> 
+
+      <form action="/player/<%= player.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Player">
+      </form>
+    </li>
   <% end %>
 </ul>
